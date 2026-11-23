@@ -27,7 +27,7 @@ Real typing, real tab order, and real button gating — no build step, no depend
 | 13 | Plaid explainer | **Next** (back arrow → 12) |
 | 14 | Plaid placeholder | Auto-advances after 2.5s, or click / Enter |
 | 15 | Account linked | **Next** ("Link another account" → 12) |
-| 16 | Payments set up | **View my account** ends the demo and resets to 01 |
+| 16 | Payments set up | **View my account** opens the Consumer Portal demo |
 
 The progress bar runs 1–9 across screens 06–15. Names, email, phone, birthday and SSN (last 4) typed on screens 01 and 08 appear on screens 02, 04, 06, 07, 10, 11 and 16.
 
@@ -51,6 +51,17 @@ tools/build_standalone.py   bundles everything into dist/ as one file
 
 - Screen 03 is a rendered image of the Figma phone mockup, with a live button over it.
 - Screen 06 says "6-digit passcode" but screen 07 has 8 boxes, matching the Figma file. Change `OTP_LEN` in `js/app.js` if this should be 6.
-- Links that would leave the flow (terms, privacy, edit address, account portal) show a short "not part of this demo" note instead.
+- The profile icon (screens 12, 13, 15, 16) and **View my account** (16) open the Consumer Portal demo. Change the URLs in `LINKS` at the top of `js/app.js`.
+- Other links that would leave the flow (terms, privacy, edit address) show a short "not part of this demo" note instead.
+- To restart the demo, click the CU logo or go to `#step-01`.
 - No data leaves the browser; nothing is stored.
 - A small "Prototype · don’t enter real personal information" badge sits bottom-right because the flow asks for an SSN and a password on a public URL. Remove `.demo-badge` from `index.html` for internal-only use.
+
+## Updating the repo (GitHub website, no tools needed)
+
+1. Open the file on GitHub (e.g. `js/app.js`) → pencil icon → paste or edit → **Commit changes**.
+   For several files or images: repo home → **Add file → Upload files** → drag the changed files in, keeping the same folders (drop `app.js` while viewing the `js/` folder) → **Commit changes**. Same-name files are overwritten.
+2. Watch **Actions** for the green check on "pages build and deployment" (about 1 minute).
+3. Hard-refresh the demo (Cmd+Shift+R / Ctrl+Shift+R).
+
+Most changes only touch `index.html` (screen copy), `css/styles.css` (look), or `js/app.js` (behavior, links).
