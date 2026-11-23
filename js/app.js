@@ -5,6 +5,11 @@
 
   var ORDER = ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16'];
   var TOTAL_STEPS = 9;
+  // External destinations (Consumer Portal demo)
+  var LINKS = {
+    profile: 'https://consumer-cdn.demo.raipartners.com/account/profile',
+    portal:  'https://consumer-cdn.demo.raipartners.com/account/summary'
+  };
   var DEMO = { fi: 'CU Credit Union', first: 'Jane', last: 'Doe', email: 'jane@email.com', pw: 'Demo1234!', dob: '07/20/1981', phone: '(123) 456-7890', ssn: '123-45-6789' };
   var state = {};
   var plaidTimer = null;
@@ -18,8 +23,10 @@
     var nav = $('#tpl-nav').content.firstElementChild.cloneNode(true);
     var btn = $('[data-action]', nav);
     if (s.dataset.nav === 'portal') {
-      btn.innerHTML = USER_ICON; btn.setAttribute('aria-label', 'Account');
-      btn.dataset.toast = 'The account portal isn’t part of this demo.';
+      var a = document.createElement('a');
+      a.className = 'nav-action'; a.href = LINKS.profile; a.setAttribute('aria-label', 'Profile');
+      a.innerHTML = USER_ICON;
+      btn.replaceWith(a);
     } else {
       btn.innerHTML = '<img src="assets/icon-x.png" alt="">';
       btn.dataset.toast = 'Closing registration isn’t part of this demo.';
@@ -202,10 +209,7 @@
   });
 
   /* ---------- 16: finish ---------- */
-  $('#finish').addEventListener('click', function () {
-    toast('End of demo — restarting.');
-    setTimeout(resetDemo, 1400);
-  });
+  $('#finish').addEventListener('click', function () { window.location.href = LINKS.portal; });
   function resetDemo() {
     state = {};
     $$('form').forEach(function (f) { f.reset(); });
