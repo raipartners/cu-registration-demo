@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CU Credit Union – Registration Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- 01 – Register Info -->
+<section class="screen" id="s01" data-step="01" aria-label="Start Registration">
+  <main>
+    <form class="card wide" id="form01" novalidate>
+      <h1 class="xl">Start Registration</h1>
+      <div class="stack">
+        <div class="field">
+          <label for="fi"><span class="req">*</span>Credit union or Bank</label>
+          <div class="input-wrap"><input id="fi" name="fi" value="CU Credit Union" autocomplete="organization" required></div>
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="first"><span class="req">*</span>First name</label>
+            <div class="input-wrap"><input id="first" name="first" placeholder="Placeholder text" autocomplete="given-name" required></div>
+          </div>
+          <div class="field">
+            <label for="last"><span class="req">*</span>Last name</label>
+            <div class="input-wrap"><input id="last" name="last" placeholder="Placeholder text" autocomplete="family-name" required></div>
+          </div>
+        </div>
+        <div class="field" id="f-email">
+          <label for="email"><span class="req">*</span>Email</label>
+          <div class="input-wrap"><input id="email" name="email" type="email" placeholder="Placeholder text" autocomplete="email" required></div>
+          <div class="field-error">Enter a valid email address.</div>
+        </div>
+        <div class="field" id="f-pw">
+          <label for="pw"><span class="req">*</span>Password</label>
+          <div class="input-wrap"><input id="pw" name="pw" type="password" placeholder="Placeholder text" autocomplete="new-password" required>
+            <button type="button" class="toggle-eye" data-eye="pw" aria-label="Show password"><img src="assets/icon-eye.png" alt=""></button></div>
+          <div class="field-error">Use at least 8 characters.</div>
+        </div>
+        <div class="field" id="f-pw2">
+          <label for="pw2"><span class="req">*</span>Confirm password</label>
+          <div class="input-wrap"><input id="pw2" name="pw2" type="password" placeholder="Placeholder text" autocomplete="new-password" required>
+            <button type="button" class="toggle-eye" data-eye="pw2" aria-label="Show password"><img src="assets/icon-eye.png" alt=""></button></div>
+          <div class="field-error">Passwords don’t match.</div>
+        </div>
+        <div class="grid-2">
+          <div class="field" id="f-dob">
+            <label for="dob"><span class="req">*</span>Birthday</label>
+            <div class="input-wrap"><input id="dob" name="dob" inputmode="numeric" placeholder="MM/DD/YYYY" autocomplete="bday" maxlength="10" required></div>
+            <div class="field-error">Use MM/DD/YYYY.</div>
+          </div>
+          <div class="field" id="f-phone">
+            <label for="phone"><span class="req">*</span>Mobile phone</label>
+            <div class="input-wrap"><input id="phone" name="phone" type="tel" inputmode="tel" placeholder="(123) 456-7890" autocomplete="tel-national" maxlength="14" required></div>
+            <div class="field-error">Enter a 10-digit number.</div>
+          </div>
+        </div>
+      </div>
+      <div class="checks">
+        <div class="check-group">
+          <div class="check-title"><a class="link sm14" href="#" data-toast="Services terms of use would open here.">Services terms of use</a></div>
+          <label class="check"><input type="checkbox" id="terms" required><span><span class="req">*</span>I agree to the terms and conditions</span></label>
+        </div>
+        <div class="check-group">
+          <div class="check-title"><a class="link sm14" href="#" data-toast="E-Sign disclosure would open here.">E Sign disclosure</a></div>
+          <label class="check"><input type="checkbox" id="esign" required><span><span class="req">*</span>I agree to the terms and conditions</span></label>
+        </div>
+        <div class="captcha">
+          <label><input type="checkbox" id="captcha"> I'm not a robot</label>
+          <img src="assets/recaptcha.png" alt="reCAPTCHA">
+        </div>
+      </div>
+      <div class="stack-sm center">
+        <button class="btn" type="submit" id="next01" disabled>Next</button>
+        <a class="link sm14" href="#" data-toast="Back to login isn’t part of this demo.">Back to login</a>
+      </div>
+    </form>
+  </main>
+</section>
+
+<!-- 02 – Email Verification Sent -->
+<section class="screen" id="s02" data-step="02" aria-label="Email Verification">
+  <div class="modal-backdrop">
+    <div class="card modal" role="dialog" aria-modal="true" aria-labelledby="t02">
+      <button class="icon-btn close" data-go="03" aria-label="Close"><img src="assets/icon-x.png" alt=""></button>
+      <h1 id="t02">Email Verification</h1>
+      <p>We sent an email to <b data-bind="email">{user email}</b> to verify your email address. Please click on the link in the email to proceed.</p>
+      <p><b>Not seeing the email in your inbox?</b><br>Please check your Spam folders and/or search for an email from no-reply@groundworkcard.com with the subject Email Verification.</p>
+      <p><b>What is Groundwork Card?</b><br>Groundwork Card is a technology platform that powers the credit cards of credit unions around the country, like yours.</p>
+      <p><b>Did you mistype your email?</b><br>Please go back to the previous page and correct the email address.</p>
+      <hr>
+      <p class="center">Haven't received a verification<br>code in your email?</p>
+      <button class="btn" data-go="03" data-primary>Resend email</button>
+      <div class="alert" role="status">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>You need to verify your email address to register your account.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 – Verify Email (On Phone) -->
+<section class="screen" id="s03" data-step="03" aria-label="Verify email on phone">
+  <main>
+    <div class="phone-stage">
+      <img src="assets/phone-email.png" alt="Email on the member's phone: Email Verification from CU Credit Union, asking them to verify their email address.">
+      <button class="btn phone-btn" data-go="04" data-primary>Verify my email</button>
+    </div>
+    <p class="caption">This step happens in the member’s email app.</p>
+  </main>
+</section>
+
+<!-- 04 – Start Registration -->
+<section class="screen" id="s04" data-step="04" data-nav="reg" aria-label="Start Registration">
+  <main>
+    <div class="card">
+      <h1>Welcome to your CU Credit Union credit card, <span data-bind="first">{first name}</span></h1>
+      <p>Let’s complete your registration. This simple process helps us keep your account secure.</p>
+      <button class="btn" data-go="05" data-primary>Let’s get started</button>
+    </div>
+  </main>
+</section>
+
+<!-- 05 – Registration Steps -->
+<section class="screen" id="s05" data-step="05" data-nav="reg" aria-label="Registration steps">
+  <main>
+    <div class="card">
+      <h1>Two simple steps to register</h1>
+      <div class="stack">
+        <div class="steprow"><span class="tile"><img src="assets/icon-profile.png" alt=""></span><span class="label">Step 1: Complete your profile</span></div>
+        <div class="steprow"><span class="tile"><img src="assets/icon-bank-lg.png" alt=""></span><span class="label">Step 2: Set up payments</span></div>
+      </div>
+      <p>You’ll need to complete your profile before you can set up payments.</p>
+      <button class="btn" data-go="06" data-primary>Let’s complete my profile</button>
+    </div>
+  </main>
+</section>
+
+<!-- 06 – Verify Mobile -->
+<section class="screen" id="s06" data-step="06" data-nav="reg" data-progress="1" aria-label="Verify mobile">
+  <main>
+    <div class="card">
+      <h1>Verify your mobile phone</h1>
+      <p>We’ll send a 6-digit passcode to the number below to confirm it’s yours.</p>
+      <dl class="panel"><dt>Mobile Phone</dt><dd data-bind="phone">(123) 456-7890</dd></dl>
+      <div role="radiogroup" aria-label="Delivery method">
+        <label class="option selected"><input type="radio" name="otpMethod" value="sms" checked><span class="radio"></span><span>Text message (SMS)<span class="sub">Standard message rates may apply</span></span></label>
+      </div>
+      <div class="stack-sm center">
+        <button class="btn" data-go="07" data-primary>Send a passcode</button>
+        <a class="link" href="#" data-go="01" data-focus="phone">Change the mobile phone number</a>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- 07 – Mobile OTP -->
+<section class="screen" id="s07" data-step="07" data-nav="reg" data-progress="2" aria-label="Enter passcode">
+  <main>
+    <form class="card" id="form07" novalidate>
+      <h1 class="xl">Verify your mobile phone</h1>
+      <p style="font-size:13px">Enter the one-time passcode we sent to <b data-bind="phone">{mobile number}</b> below</p>
+      <div class="otp" id="otp" role="group" aria-label="One-time passcode"></div>
+      <p class="center" style="font-size:13px">Haven't received the Passcode?<br><a class="link" href="#" data-toast="A new passcode was sent (demo).">Resend one-time passcode</a></p>
+      <div class="stack-sm center">
+        <button class="btn" type="submit" id="next07" disabled>Verify my mobile phone</button>
+        <a class="link" href="#" data-go="06">Back</a>
+      </div>
+    </form>
+  </main>
+</section>
+
+<!-- 08 – SSN Entry -->
+<section class="screen" id="s08" data-step="08" data-nav="reg" data-progress="3" aria-label="Social Security Number">
+  <main>
+    <form class="card" id="form08" novalidate>
+      <h1>Enter your Social Security Number (SSN)</h1>
+      <p>We use this to confirm your identity and mailing address. Please do not provide the social security number of someone else, even if you are a secondary cardholder.</p>
+      <div class="field" id="f-ssn">
+        <label for="ssn"><span class="req">*</span>Social Security Number</label>
+        <div class="input-wrap"><input id="ssn" type="password" inputmode="numeric" placeholder="***-**-****" maxlength="11" autocomplete="off" required>
+          <button type="button" class="toggle-eye" data-eye="ssn" aria-label="Show SSN"><img src="assets/icon-eye.png" alt=""></button></div>
+        <div class="hint"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Your SSN is encrypted and stored securely.</div>
+      </div>
+      <button class="btn" type="submit" id="next08" disabled>Next</button>
+    </form>
+  </main>
+</section>
+
+<!-- 09 – USPS Confirmation -->
+<section class="screen" id="s09" data-step="09" data-nav="reg" data-progress="4" aria-label="Verify mailing address">
+  <main>
+    <div class="card">
+      <h1>Verify your mailing address</h1>
+      <p>Here is the mailing address we have on file. We recommend a small formatting change to ensure accurate delivery. Which would you like to use?</p>
+      <dl class="panel"><dt>Address</dt><dd>2121 Nakatomi Plaza<br>Suit 80<br>Century City, CA 90067</dd></dl>
+      <div class="stack-sm center">
+        <button class="btn" data-go="10" data-primary>Verify mailing address</button>
+        <a class="link" href="#" data-toast="Address editing isn’t part of this demo.">Edit the mailing address</a>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- 10 – Confirm Profile -->
+<section class="screen" id="s10" data-step="10" data-nav="reg" data-progress="5" aria-label="Confirm your information">
+  <main>
+    <div class="card">
+      <h1>Confirm your information</h1>
+      <p>Here’s the personal information we have for you so far. Is this correct? Please make sure it’s your personal information only.</p>
+      <dl class="panel">
+        <dt>First Name</dt><dd data-bind="first">Jane</dd>
+        <dt>Name</dt><dd data-bind="last">Doe</dd>
+        <dt>Birthday</dt><dd data-bind="dob">07/20/1981</dd>
+        <dt>Social Security Number</dt><dd data-bind="ssnMasked">***-**-6789</dd>
+        <dt>Address</dt><dd>2121 Nakatomi Plaza<br>Suit 80<br>Century City, CA 90067</dd>
+        <dt>Mobile Phone</dt><dd data-bind="phone">(123) 456-7890</dd>
+        <dt>Email</dt><dd data-bind="email">Jane@email.com</dd>
+        <dt>Credit Union or Bank</dt><dd data-bind="fi">CU Credit Union</dd>
+      </dl>
+      <div class="stack-sm center">
+        <button class="btn" data-go="11" data-primary>Yes, this is correct</button>
+        <a class="link" href="#" data-go="01">Edit information</a>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- 11 – Registration complete -->
+<section class="screen" id="s11" data-step="11" data-nav="reg" data-progress="6" aria-label="Profile complete">
+  <main>
+    <div class="card">
+      <h1>Thank you, <span data-bind="first">{first name}</span>. Your profile is complete!</h1>
+      <div class="stack">
+        <div class="steprow done"><span class="tile"><img src="assets/icon-profile.png" alt=""></span><span class="label">Step 1: Complete your profile</span><span class="tile"><img class="check" src="assets/icon-check.png" alt="Complete"></span></div>
+        <div class="steprow"><span class="tile"><img src="assets/icon-bank-lg.png" alt=""></span><span class="label">Step 2: Set up payments</span></div>
+      </div>
+      <button class="btn" data-go="12" data-primary>Let’s set up payments</button>
+    </div>
+  </main>
+</section>
+
+<!-- 12 – Link Bank -->
+<section class="screen" id="s12" data-step="12" data-nav="portal" data-progress="7" aria-label="Choose payment method">
+  <main>
+    <form class="card" id="form12" novalidate>
+      <h1>How do you want to pay your credit card?</h1>
+      <p>We recommend that you link a checking or savings account. It’s reliable, convenient, secure, and free.</p>
+      <div class="stack" role="radiogroup" aria-label="Payment method">
+        <label class="option selected"><input type="radio" name="pay" value="link" checked><span class="radio"></span><span>Link a checking or savings account to make payments (recommended)</span></label>
+        <label class="option"><input type="radio" name="pay" value="billpay"><span class="radio"></span><span>Use online bill pay with my credit union or bank</span></label>
+        <label class="option"><input type="radio" name="pay" value="check"><span class="radio"></span><span>Mail a check</span></label>
+      </div>
+      <button class="btn" type="submit" id="next12">Next</button>
+    </form>
+  </main>
+</section>
+
+<!-- 13 – Link Account -->
+<section class="screen" id="s13" data-step="13" data-nav="portal" data-progress="8" aria-label="Link account with Plaid">
+  <main>
+    <div class="card">
+      <h1>Link a checking or savings account for payments.</h1>
+      <div class="partners"><img src="assets/partners.png" alt="CU Credit Union, secure lock, Plaid"></div>
+      <p><b>We’ll link your bank account securely using Plaid.</b><br>Plaid connects to 11,000 financial institutions. Connecting your account is easy:</p>
+      <ul class="how">
+        <li><img src="assets/icon-bank.png" alt=""><div><b>Step One</b>Select your financial institution from a list. Then, enter your login and password.</div></li>
+        <li><img src="assets/icon-shield.png" alt=""><div><b>Step Two</b>Plaid encrypts the data you’ve chosen to share and securely shares it with Groundwork. We never see your bank login and password.</div></li>
+        <li><img src="assets/icon-lock.png" alt=""><div><b>Step Three</b>Plaid builds a secure connection between your credit card and payment account.</div></li>
+        <li><img src="assets/icon-coin.png" alt=""><div><b>Micro-deposit method</b>Prefer not to log in? Within Plaid you can choose to enter your routing and account numbers and receive a micro-deposit</div></li>
+      </ul>
+      <div class="row-between">
+        <button class="icon-btn" data-go="12" aria-label="Back"><img src="assets/icon-back.png" alt="" width="42" height="40"></button>
+        <button class="btn auto" data-go="14" data-primary>Next</button>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- 14 – Plaid placeholder -->
+<section class="screen" id="s14" data-step="14" aria-label="Connecting with Plaid">
+  <main>
+    <img src="assets/plaid-white.png" alt="Plaid">
+    <div class="spinner" aria-hidden="true"></div>
+    <p class="caption">Plaid Link would open here. Continuing automatically…</p>
+  </main>
+</section>
+
+<!-- 15 – Congratulations -->
+<section class="screen" id="s15" data-step="15" data-nav="portal" data-progress="9" aria-label="Account linked">
+  <main>
+    <div class="card">
+      <div class="congrats"><img src="assets/icon-check.png" alt=""><div><h1>Congratulations</h1><p>You’ve successfully linked your account</p></div></div>
+      <div class="kv">
+        <div><span>Bank or credit union</span><span>J.P. Morgan Chase Bank</span></div>
+        <div><span>Account name</span><span>Adv Plus Banking</span></div>
+        <div><span>Account type</span><span>Checking</span></div>
+        <div><span>Routing number</span><span>*****0002</span></div>
+      </div>
+      <div class="stack-sm center">
+        <button class="btn" data-go="16" data-primary>Next</button>
+        <a class="link sm14" href="#" data-go="12">Link another account</a>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- 16 – Payment Setup Complete -->
+<section class="screen" id="s16" data-step="16" data-nav="portal" aria-label="Payments set up">
+  <main>
+    <div class="card">
+      <h1>Thank you, <span data-bind="first">{first name}</span>. You’ve set up payments!</h1>
+      <div class="stack">
+        <div class="steprow done"><span class="tile"><img src="assets/icon-profile.png" alt=""></span><span class="label">Step 1: Complete your profile</span><span class="tile"><img class="check" src="assets/icon-check.png" alt="Complete"></span></div>
+        <div class="steprow done"><span class="tile"><img src="assets/icon-bank-lg.png" alt=""></span><span class="label">Step 2: Set up payments</span><span class="tile"><img class="check" src="assets/icon-check.png" alt="Complete"></span></div>
+      </div>
+      <button class="btn" data-primary id="finish">View my account</button>
+    </div>
+  </main>
+</section>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="demo-badge" aria-hidden="true">Prototype · don’t enter real personal information</div>
+
+<template id="tpl-nav">
+  <header class="topnav">
+    <a class="logo" href="#step-01" aria-label="CU Credit Union home"><img src="assets/logo-cu.png" alt="CU Credit Union"></a>
+    <button class="nav-action" data-action aria-label="Close registration"></button>
+  </header>
+</template>
+<template id="tpl-footer">
+  <footer class="footer">
+    <div><a href="#" data-toast="Privacy Policy would open here.">Privacy Policy</a></div>
+    <div class="copy">© Groundwork Card</div>
+  </footer>
+</template>
+
+<script src="js/app.js"></script>
+</body>
+</html>
